@@ -5,7 +5,7 @@ export default function RootLayout(){
   return(
     <main>
       <Navbar />
-      <section className="min-sm:md:mx-20 min-xl:mx-96">
+      <section className="mx-3 min-sm:md:mx-20 min-xl:mx-96">
         <Outlet />
       </section>
     </main>

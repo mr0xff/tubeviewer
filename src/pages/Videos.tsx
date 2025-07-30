@@ -10,8 +10,8 @@ export default function Videos(){
       <div className="flex flex-col items-center my-3">
         {isPending && <p className="font-medium animate-pulse">Carregando Videos ...</p>}
         <ul className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-          {data?.map(props =>(
-            <li><Video {...props}/></li>
+          {data?.map(props => (
+            <li key={props.videoId}><Video {...props}/></li>
           ))}
         </ul>
       </div>
