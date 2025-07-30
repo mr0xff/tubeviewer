@@ -6,9 +6,9 @@ import { NavLink, useLocation } from 'react-router';
 
 const navigation = [
   { name: 'Página Inicial', href: '/' },
-  { name: 'Vidoes', href: '/movies' },
-  { name: 'Sobre', href: '/about' },
-  { name: 'Contactos', href: '/contacts' },
+  { name: 'Vidoes', href: '/videos' },
+  { name: 'Sobre', href: '/sobre' },
+  { name: 'Contactos', href: '/contactos' },
 ];
 
 export default function Navbar() {
