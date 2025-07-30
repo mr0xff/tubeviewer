@@ -3,13 +3,13 @@ import type { Video } from '@/lib/types';
 
 const instance = axios.create({ baseURL: "https://www.googleapis.com/youtube/v3/" });
 
-export async function getVidoes(): Promise<Video[]>{
+export async function getVidoes(count: number): Promise<Video[]>{
   const params = {
     key: import.meta.env.VITE_API_KEY,
     channelId: import.meta.env.VITE_CHANNEL_ID,
     part: 'snippet,id',
     order: 'date',
-    maxResults: 50,
+    maxResults: count,
     type: 'video' // só vídeos, ignora playlists ou canais
   };
 
