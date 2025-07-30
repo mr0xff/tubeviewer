@@ -18,7 +18,10 @@ export default function Videos(){
           ))}
         </ul>
 
-        <button onClick={showMore} className="rounded-xl uppercase font-bold my-3 text-orange-500 hover:ring hover:ring-orange-200 px-3 py-2">Ver mais</button>
+        <button 
+          disabled={isPending} 
+          onClick={showMore} 
+          className="disabled:text-gray-500 rounded-xl uppercase font-bold my-3 text-orange-500 hover:ring hover:ring-orange-200 px-3 py-2">Ver mais</button>
       </div>
     </div>
   )
