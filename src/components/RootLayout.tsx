@@ -1,13 +1,21 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Navbar from "@/components/Navbar";
 
-export default function RootLayout(){
-  return(
-    <main>
-      <Navbar />
-      <section className="mx-3 min-sm:md:mx-20 min-xl:mx-96">
+export default function RootLayout() {
+  const navigate = useNavigate();
+
+  const handleSearch = (query: string) => {
+    // Navigate to videos page with search query
+    navigate(`/videos?search=${encodeURIComponent(query)}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-black">
+      <Navbar onSearch={handleSearch} />
+      <main>
         <Outlet />
-      </section>
-    </main>
-  )
+      </main>
+    </div>
+  );
 }
+
