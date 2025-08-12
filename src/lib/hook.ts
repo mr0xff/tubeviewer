@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getVidoes } from "./api";
+import { getVideos } from "./api";
 import type { AxiosError } from "axios";
 
-export function useGetAllVideos(count: number){
+export function useGetAllVideos(count: number, searchQuery?: string){
   return useQuery({
-    queryKey: ["all_vidoes", count],
-    queryFn: () => getVidoes(count)
+    queryKey: ["all_videos", count, searchQuery],
+    queryFn: () => getVideos(count, searchQuery)
   })
 }
 

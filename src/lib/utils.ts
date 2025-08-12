@@ -1,7 +1,7 @@
 import type { Video } from "./types";
 
 export class BrowserCache {
-  #storageKey = "tubeviwer";
+  #storageKey = "tubeviewer";
   #cacheInMemory: Map<string, Video> = new Map(); // pode ser passado para Set's
 
   setCache(data: unknown){
