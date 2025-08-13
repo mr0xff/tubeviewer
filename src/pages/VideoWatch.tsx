@@ -38,7 +38,7 @@ export default function VideoWatch() {
           <span>Voltar</span>
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 min-[1820px]:grid-cols-3 gap-8">
           {/* Main Video Section */}
           <div className="lg:col-span-2">
             {/* Video Player */}

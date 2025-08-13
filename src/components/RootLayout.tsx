@@ -12,7 +12,7 @@ export default function RootLayout() {
   return (
     <div className="min-h-screen bg-black">
       <Navbar onSearch={handleSearch} />
-      <main>
+      <main className="lg:mx-[25%]">
         <Outlet />
       </main>
     </div>
