@@ -60,7 +60,7 @@ export default function Home() {
 
           {/* Videos Grid */}
           {isPending ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {Array.from({ length: 8 }).map((_, index) => (
                 <div key={index} className="bg-gray-800 rounded-lg overflow-hidden animate-pulse">
                   <div className="h-48 bg-gray-700"></div>
@@ -72,7 +72,7 @@ export default function Home() {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {otherVideos.map((video) => (
                 <Video key={video.videoId} {...video} />
               ))}

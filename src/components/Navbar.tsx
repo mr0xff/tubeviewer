@@ -33,11 +33,11 @@ export default function Navbar({ onSearch }: NavbarProps) {
             <NavLink to="/" className="flex items-center">
               <img
                 src="/logo.jpg"
-                alt="Tube Viewer"
+                alt="Me Merece"
                 className="h-10 w-auto rounded-lg"
               />
               <span className="ml-3 text-xl font-bold text-orange-500">
-                Tube Viewer
+                MeMerece
               </span>
             </NavLink>
           </div>
