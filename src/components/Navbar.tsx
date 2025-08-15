@@ -7,7 +7,10 @@ interface NavbarProps {
 }
 
 const navigation = [
-  { name: 'Vídeos', href: '/videos' }
+  { name: 'Vídeos', href: '/videos' },
+  { name: 'Produções', href: '/producoes' },
+  { name: 'Sobre', href: '/sobre' },
+  { name: 'Contato', href: '/contato' },
 ];
 
 export default function Navbar({ onSearch }: NavbarProps) {
