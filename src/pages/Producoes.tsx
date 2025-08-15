@@ -1,10 +1,10 @@
-import { FaUser, FaVideo, FaPen } from 'react-icons/fa';
+import { FaUser, FaVideo, FaPen, FaYoutube } from 'react-icons/fa';
 
 interface CastMember {
   name: string;
   role: string;
   description: string;
-  icon: React.ReactNode;
+  image: string;
 }
 
 const castMembers: CastMember[] = [
@@ -12,19 +12,19 @@ const castMembers: CastMember[] = [
     name: "Tomas de Matos",
     role: "Produtor Executivo",
     description: "Responsável pela coordenação geral dos projetos, supervisão da produção e gestão estratégica dos conteúdos. Com vasta experiência em entretenimento digital, Tomas lidera a equipe criativa e garante a qualidade dos produtos finais.",
-    icon: <FaVideo className="h-8 w-8 text-orange-500" />
+    image: "/Tomas-Matos.png"
   },
   {
     name: "Gaspar Pereira Wão",
     role: "Director de Elenco, Actor",
     description: "Talentoso ator e diretor de elenco, Gaspar traz vida aos personagens com sua versatilidade e carisma. Além de atuar, é responsável pela seleção e direção dos talentos que participam das produções, garantindo performances autênticas e envolventes.",
-    icon: <FaUser className="h-8 w-8 text-orange-500" />
+    image: "/Gaspar-1.png"
   },
   {
     name: "Janet Máquina",
     role: "Roteirista",
     description: "Mente criativa por trás dos roteiros inovadores e divertidos. Janet desenvolve histórias que conectam com o público dos PALOP, criando narrativas autênticas que refletem a cultura e o humor africano em português com inteligência e originalidade.",
-    icon: <FaPen className="h-8 w-8 text-orange-500" />
+    image: "/Janet-Maquina.png"
   }
 ];
 
@@ -55,17 +55,16 @@ export default function Producoes() {
                 key={index}
                 className="bg-gray-900 rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform"
               >
-                {/* Image Placeholder */}
-                <div className="relative h-64 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
-                  <div className="text-center">
-                    {member.icon}
-                    <div className="mt-4 text-gray-400 text-sm">
-                      Foto em breve
-                    </div>
-                  </div>
+                {/* Image */}
+                <div className="relative h-90 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover object-center"
+                  />
                   
                   {/* Overlay with role */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                  <div data-video-overlay className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
                     <span className="text-orange-500 text-sm font-semibold uppercase tracking-wide">
                       {member.role}
                     </span>
@@ -133,8 +132,32 @@ export default function Producoes() {
             </div>
           </div>
         </div>
+
+        {/* XPanto Studio Section */}
+        <div className="bg-gray-900 rounded-lg p-8 md:p-12 mt-16">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-white mb-6">
+              XPanto Studio
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+              A XPanto Studio é a produtora responsável por trazer à vida os conteúdos 
+              originais da Me Merece. Com uma equipe dedicada e paixão pela criação, 
+              garantimos a qualidade e a inovação em cada projeto.
+            </p>
+            <a 
+              href="https://www.youtube.com/@XPantoStudio" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-300"
+            >
+              <FaYoutube className="-ml-1 mr-3 h-5 w-5" />
+              Visitar Canal no YouTube
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
 

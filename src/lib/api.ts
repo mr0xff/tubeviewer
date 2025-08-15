@@ -3,7 +3,8 @@ import type { Video } from '@/lib/types';
 import { BrowserCache } from './utils';
 
 const instance = axios.create({ 
-  baseURL: "https://www.googleapis.com/youtube/v3/"
+  baseURL: "https://www.googleapis.com/youtube/v3/",
+  timeout: 10000 // 10 seconds timeout
 });
 
 const cache = new BrowserCache();
@@ -11,16 +12,16 @@ const cache = new BrowserCache();
 export async function getVideos(count: number, searchQuery?: string): Promise<Video[]> {
   try {
     // Check cache first (only for non-search queries or if we have cached search results)
-    if (!searchQuery && cache.hasCache()) {
-      return cache.getVideos().slice(0, count >= 100 ? 99 : count);
-    }
+    // if (!searchQuery && cache.hasCache()) {
+    //   return cache.getVideos().slice(0, count >= 100 ? 99 : count);
+    // }
 
     const params = {
       key: import.meta.env.VITE_API_KEY,
       channelId: import.meta.env.VITE_CHANNEL_ID,
       part: 'snippet,id',
-      order: 'date',
-      maxResults: 100, // YouTube API limit is 50 per request
+      order: searchQuery ? 'relevance' : 'date',
+      maxResults: Math.min(count >= 100 ? 99 : count, 50), // YouTube API limit is 50 per request
       type: 'video', // só vídeos, ignora playlists ou canais
       ...(searchQuery && { q: searchQuery }) // adiciona query de busca se fornecida
     };
@@ -37,7 +38,7 @@ export async function getVideos(count: number, searchQuery?: string): Promise<Vi
     const formattedVideos: Video[] = data.items.map((item: any) => ({
       title: item.snippet.title,
       videoId: item.id.videoId,
-      thumbnail: item.snippet.thumbnails.medium.url ,
+      thumbnail: item.snippet.thumbnails.medium?.url || item.snippet.thumbnails.default?.url,
       publishedAt: item.snippet.publishedAt,
       videoUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`
     }));
@@ -46,7 +47,7 @@ export async function getVideos(count: number, searchQuery?: string): Promise<Vi
     if (!searchQuery) {
       cache.setCache(formattedVideos);
     }
-    
+
     return formattedVideos;
 
   } catch (error) {
