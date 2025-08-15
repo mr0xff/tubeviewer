@@ -26,8 +26,6 @@ export async function getVideos(count: number, searchQuery?: string): Promise<Vi
       ...(searchQuery && { q: searchQuery }) // adiciona query de busca se fornecida
     };
 
-    console.log('Making API request with params:', params);
-
     const response = await instance.get("/search", { params });
     const data = response.data;
 
